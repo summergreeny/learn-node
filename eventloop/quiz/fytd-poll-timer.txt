@@ -1,3 +1,7 @@
 - Explain the order of execution in terms of the event loop for eventloop/poll_timer.js.
+The setTimeout callback will be queued in the event loop.
+The someAsyncOperation initiates an asynchronous operation and queues its callback after the synchronous while loop.
 - Will the order of execution change if the delay in the while loop is changed from 10s to 150s? Why or why not?
+Yes, the order of execution will change. With a longer delay in the while loop, the setTimeout callback will execute before the someAsyncOperation callback.
 - Will the order of execution change if timeout is changed to 0? Why or why not?
+No, the order of execution won't change. setTimeout still schedules the callback asynchronously, ensuring it's queued after any currently executing code.

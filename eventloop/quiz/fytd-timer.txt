@@ -1,1 +1,9 @@
 - In eventloop/timer.js, what will be the order of execution? Briefly explain the order of execution w.r.t the event loop phases.
+
+In eventloop/timer.js:
+
+Both foo(2) and foo(1) are called.
+Synchronously, "foo" is logged, then setTimeout schedules callbacks for bar(2) and bar(1).
+Synchronously, "baz" is logged.
+Event loop enters the timer phase.
+Both setTimeout callbacks are executed, logging "2: bar" and "1: bar" respectively.
